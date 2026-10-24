@@ -1,0 +1,15 @@
+[Name], [Designation]
+Shivam Rathod, Research Head
+Suyash Rathod, Full Stack Developer
+Aniket Chavhan, Database
+Pavan Londhe, UI/UX Designer
+Ashish Ade, CyberForensic
+Darshan Tripadwar, Auth and Python Developer
+Mohini Baghele, 
+Manish Wagh, 
+Prashik Undirwade,
+Mandar Sahare,
+Soummya Marekar, 
+Sharvi Date, 
+Vasundhara Thakre,
+Shivani Balpande,
