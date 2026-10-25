@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team CyberHelix | Enterprise Command & AI Nexus</title>
+  <meta name="description" content="Advanced Multi-Pod Cyber Command, NeuroNova AI Assistant & Cloud IDE Platform for Team CyberHelix.">
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient Liquid Mesh Glow Elements -->
+  <div class="liquid-orb liquid-orb-1" aria-hidden="true"></div>
+  <div class="liquid-orb liquid-orb-2" aria-hidden="true"></div>
+  <div class="liquid-orb liquid-orb-3" aria-hidden="true"></div>
+  <!-- Corporate Architectural Grid -->
+  <div class="cyber-grid-overlay" aria-hidden="true"></div>
+
+  <!-- ====================================================================
+       ZERO-TRUST LOGIN GATEWAY OVERLAY
+       ==================================================================== -->
+  <div id="login-gateway" class="login-gateway-overlay">
+    <div class="login-card">
+      <div class="login-logo-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </div>
+      <h2 class="login-header-title">Team CyberHelix</h2>
+      <div class="login-sub-tag">Zero-Trust Authentication Gateway</div>
+      
+      <form id="login-form" onsubmit="handleUserLogin(event)">
+        <div class="login-form-group">
+          <label class="login-label" for="login-email">Operative Email ID</label>
+          <input type="email" id="login-email" class="login-input" placeholder="e.g. suyash.rathod@cyberhelix.io" required autocomplete="email">
+        </div>
+        <div class="login-form-group">
+          <label class="login-label" for="login-password">Security Passphrase</label>
+          <input type="password" id="login-password" class="login-input" placeholder="••••••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn-login-submit">Authenticate & Enter Nexus →</button>
+      </form>
+
+      <!-- Quick Demo Access Pills -->
+      <div class="demo-login-box">
+        <div class="demo-login-title">Quick Demo Login (Click to Autfill)</div>
+        <div class="demo-pills-row">
+          <button type="button" class="demo-pill admin-pill" onclick="quickFillCredentials('suyash.rathod@cyberhelix.io')">👑 Suyash (Admin)</button>
+          <button type="button" class="demo-pill" onclick="quickFillCredentials('aniket.chavhan@cyberhelix.io')">🗄️ Aniket (DB)</button>
+          <button type="button" class="demo-pill" onclick="quickFillCredentials('pavan.londhe@cyberhelix.io')">🎨 Pavan (UI/UX)</button>
+          <button type="button" class="demo-pill" onclick="quickFillCredentials('ashish.ade@cyberhelix.io')">🔬 Ashish (DFIR)</button>
+          <button type="button" class="demo-pill" onclick="quickFillCredentials('shivam.rathod@cyberhelix.io')">🛡️ Shivam (Research)</button>
+          <button type="button" class="demo-pill" onclick="quickFillCredentials('darshan.tripadwar@cyberhelix.io')">🔑 Darshan (Auth)</button>
+          <button type="button" class="demo-pill" onclick="quickFillCredentials('mohini.baghele@cyberhelix.io')">🚨 Mohini (SOC)</button>
+          <button type="button" class="demo-pill" onclick="quickFillCredentials('manish.wagh@cyberhelix.io')">⚡ Manish (Pentest)</button>
+        </div>
+        <div style="margin-top: 0.85rem; font-size: 0.72rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;">
+          Standard Default Password: <code>Helix@2026</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-container" id="app-container">
+    <!-- Header & Navigation Bar -->
+    <header class="site-header">
+      <div class="nav-wrapper">
+        <!-- Logo -->
+        <div class="brand-logo" onclick="switchTab('dashboard')">
+          <div class="logo-helix-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">CYBERHELIX</span>
+            <span class="brand-status-tag">
+              <span class="status-dot"></span>
+              SECURE PLATFORM // v3.0
+            </span>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs" aria-label="Portal Navigation" id="main-nav-tabs">
+          <button class="nav-tab-btn active" data-tab="dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            Dashboard
+          </button>
+          <button class="nav-tab-btn" data-tab="pod" id="nav-pod-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            <span id="nav-pod-title">My Pod Station</span>
+          </button>
+          <button class="nav-tab-btn" data-tab="projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            Projects
+          </button>
+          <button class="nav-tab-btn" data-tab="notes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            Knowledge Base
+          </button>
+          <button class="nav-tab-btn" data-tab="github">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            GitHub
+          </button>
+          <button class="nav-tab-btn" data-tab="neuronova">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>
+            NeuroNova AI
+          </button>
+          <button class="nav-tab-btn" data-tab="ide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Cloud IDE
+          </button>
+          <button class="nav-tab-btn" data-tab="members">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            Directory
+          </button>
+          <button class="nav-tab-btn" data-tab="utilities">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            Cyber Tools
+          </button>
+          <!-- Admin Master Tab (Displayed for Suyash Rathod) -->
+          <button class="nav-tab-btn" data-tab="admin" id="nav-admin-btn" style="display:none; color:#0284c7; font-weight:800;">
+            <span>👑 Admin Console</span>
+          </button>
+        </nav>
+
+        <!-- Right Side Actions & Member Profile -->
+        <div class="header-actions">
+          <button class="cmd-palette-btn" id="header-cmd-btn" title="Quick Command Palette (Ctrl+K)">
+            <span>Search</span>
+            <span class="kbd-shortcut">Ctrl+K</span>
+          </button>
+
+          <!-- Member Profile Menu -->
+          <div class="member-switch-wrap" style="position:relative;">
+            <div class="member-badge-btn" id="profile-dropdown-btn" onclick="toggleProfileDropdown()">
+              <img id="header-avatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=Suyash" class="user-avatar-sm" alt="Active Operative Avatar">
+              <div class="member-info-mini">
+                <span class="member-name-label" id="header-member-name">Suyash Rathod</span>
+                <span class="member-role-label" id="header-member-role">Super Admin</span>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+
+            <!-- Profile Dropdown Menu -->
+            <div id="profile-dropdown" class="profile-dropdown-menu" style="display:none; position:absolute; top:110%; right:0; width:220px; background:rgba(255,255,255,0.96); border:1px solid var(--border-subtle); border-radius:var(--radius-md); box-shadow:var(--shadow-card); backdrop-filter:blur(24px); z-index:200; padding:0.5rem;">
+              <button class="dropdown-item-btn" onclick="openPasswordModal()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                Change Password
+              </button>
+              <button class="dropdown-item-btn" onclick="openAIModelModal()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                AI Model Engine (GGUF/HF)
+              </button>
+              <div style="border-top:1px solid var(--border-subtle); margin:0.35rem 0;"></div>
+              <button class="dropdown-item-btn" onclick="handleUserLogout()" style="color:#ef4444;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                Sign Out / Lock Session
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Real-Time Zero-Trust Route & Complex URL Display Bar -->
+    <div class="secure-route-bar" id="secure-route-bar">
+      <div class="route-badge">
+        <span class="status-dot"></span>
+        <span class="route-label">ACTIVE ZERO-TRUST ENDPOINT:</span>
+      </div>
+      <div class="route-url-display" id="route-url-display" onclick="copyCurrentRouteUrl()" title="Click to copy full cryptographic route">
+        http://localhost:8080/portal/index.html#/platform/suyash-rathod/super-admin-nexus?session=sec_enc_...&auth_tier=level-5-superadmin
+      </div>
+      <button class="btn-copy-route" onclick="copyCurrentRouteUrl()" title="Copy Full Cryptographic Route Link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        <span>Copy Route URL</span>
+      </button>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- ====================================================================
+           1. DASHBOARD VIEW (PERSONALIZED HERO & SUMMARY)
+           ==================================================================== -->
+      <section id="view-dashboard" class="view-panel active">
+        <!-- Hero Banner with Personalized Greeting -->
+        <div class="hero-card">
+          <div class="hero-glow-blob"></div>
+          <div class="hero-content">
+            <div class="hero-pill">
+              <span class="status-dot"></span>
+              <span id="hero-defcon-tag">DEFCON 2 // ALL SYSTEMS SECURE - SECURE SESSION ACTIVE</span>
+            </div>
+            <h1 class="hero-title" id="hero-main-greeting">
+              Welcome back, <span class="text-gradient" id="hero-operative-name">Suyash Rathod</span>!
+            </h1>
+            <p class="hero-desc" id="hero-member-greeting">
+              Operational Nexus ready. Your specialized workspace, pod tasks, active security repositories, and NeuroNova AI copilot are synchronized.
+            </p>
+            <div class="hero-stats-row">
+              <div class="stat-box">
+                <div class="stat-number" id="stat-pod-tasks-count">5</div>
+                <div class="stat-label">My Field Tasks</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">04</div>
+                <div class="stat-label">Active Projects</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">09</div>
+                <div class="stat-label">Knowledge Notes</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number" style="color:var(--liquid-emerald);">100%</div>
+                <div class="stat-label">Test Suite Pass</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry Ticker -->
+        <div class="ticker-card">
+          <div class="ticker-label">
+            <span class="status-dot"></span>
+            LIVE NEXUS FEED:
+          </div>
+          <div class="ticker-track">
+            <div class="ticker-item">Helix Sentinel SIEM: <span class="highlight">1,420 logs triaged/min</span></div>
+            <div class="ticker-item">Aegis Auth Core: <span class="highlight">Zero token breaches detected</span></div>
+            <div class="ticker-item">NeuroNova AI: <span class="highlight">GGUF/HF Engine Online</span></div>
+            <div class="ticker-item">Recon Crawler: <span class="alert-warn">CVE-2026-1101 (OpenSSH) flagged CVSS 9.8</span></div>
+            <div class="ticker-item">DFIR Toolkit: <span class="highlight">Entropy scanner v0.9 active</span></div>
+          </div>
+        </div>
+
+        <!-- Two-column Dashboard Widgets -->
+        <div class="dashboard-grid">
+          <!-- Left: My Assigned Pod Projects & Tasks -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                My Pod Projects & Responsibilities
+              </div>
+              <button class="btn-card-action" onclick="switchTab('projects')">View All Projects →</button>
+            </div>
+            <div class="dash-project-list" id="dash-assigned-projects">
+              <!-- Dynamically populated based on active member identity -->
+            </div>
+          </div>
+
+          <!-- Right: Knowledge Base Quick Links -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                Recent Knowledge Notes
+              </div>
+              <button class="btn-card-action" onclick="switchTab('notes')">Knowledge Base →</button>
+            </div>
+            <div id="dash-recent-notes">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           2. DEDICATED FIELD POD PLATFORM VIEW (CUSTOMIZED PER MEMBER)
+           ==================================================================== -->
+      <section id="view-pod" class="view-panel">
+        <div class="pod-banner">
+          <div>
+            <h2 class="pod-banner-title" id="pod-hero-title">Operative Field Station</h2>
+            <p class="pod-banner-sub" id="pod-hero-sub">Specialized workspace customized for your domain and day-to-day operations.</p>
+          </div>
+          <button class="btn-primary" onclick="openAddTaskModal()">+ Add Field Task</button>
+        </div>
+
+        <div class="pod-workspace-container">
+          <!-- Dynamic Pod Interactive Workbench (e.g. SQL Studio for Aniket, UI/UX Studio for Pavan, Forensics for Ashish) -->
+          <div id="pod-interactive-workbench"></div>
+
+          <!-- Field Tasks Board (Kanban Sprints) -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                My Field Work & Sprint Task Board
+              </div>
+              <span class="tag" id="pod-task-count-tag">Interactive Kanban</span>
+            </div>
+            <div class="field-tasks-board" id="field-tasks-board">
+              <!-- Columns for To Do, In Progress, Completed -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           3. PROJECTS VIEW
+           ==================================================================== -->
+      <section id="view-projects" class="view-panel">
+        <div class="view-header">
+          <div class="view-title-wrap">
+            <div>
+              <h2 class="view-main-title">Engineering & Research Projects</h2>
+              <p class="view-sub-desc">Active software pipelines, forensic suites, and authentication microservices maintained by Team CyberHelix.</p>
+            </div>
+            <div class="filter-bar">
+              <div class="search-input-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="project-search-input" class="cyber-input" placeholder="Search projects, stacks, tags...">
+              </div>
+              <div class="filter-btn-group">
+                <button class="filter-pill project-filter-btn active" data-filter="all">All</button>
+                <button class="filter-pill project-filter-btn" data-filter="my">My Projects</button>
+                <button class="filter-pill project-filter-btn" data-filter="siem">SIEM</button>
+                <button class="filter-pill project-filter-btn" data-filter="crypto">Crypto/Auth</button>
+                <button class="filter-pill project-filter-btn" data-filter="forensics">Forensics</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid"></div>
+      </section>
+
+      <!-- ====================================================================
+           4. KNOWLEDGE BASE / NOTES VIEW
+           ==================================================================== -->
+      <section id="view-notes" class="view-panel">
+        <div class="view-header">
+          <div class="view-title-wrap">
+            <div>
+              <h2 class="view-main-title">Team Knowledge Base</h2>
+              <p class="view-sub-desc">Documentation, pentesting cheatsheets, incident response playbooks, and database standards.</p>
+            </div>
+            <div class="search-input-wrap" style="min-width: 320px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="notes-search-input" class="cyber-input" placeholder="Search notes, commands, articles...">
+            </div>
+          </div>
+        </div>
+
+        <div class="notes-layout">
+          <!-- Sidebar Categories -->
+          <aside class="notes-sidebar">
+            <h4 style="font-size:0.8rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.75rem; font-family:'JetBrains Mono'; font-weight:700;">Categories</h4>
+            <div style="display:flex; flex-direction:column; gap:0.35rem;">
+              <button class="notes-category-btn active" data-cat="all">
+                <span>All Notes</span>
+                <span class="cat-count">9</span>
+              </button>
+              <button class="notes-category-btn" data-cat="cybersecurity">
+                <span>CyberSecurity & Pentest</span>
+                <span class="cat-count">2</span>
+              </button>
+              <button class="notes-category-btn" data-cat="cyber-forensics">
+                <span>Cyber Forensics (DFIR)</span>
+                <span class="cat-count">2</span>
+              </button>
+              <button class="notes-category-btn" data-cat="development">
+                <span>Systems & Development</span>
+                <span class="cat-count">2</span>
+              </button>
+              <button class="notes-category-btn" data-cat="database">
+                <span>Database Engineering</span>
+                <span class="cat-count">1</span>
+              </button>
+              <button class="notes-category-btn" data-cat="ui-ux">
+                <span>UI/UX & Design</span>
+                <span class="cat-count">1</span>
+              </button>
+              <button class="notes-category-btn" data-cat="meeting-notes">
+                <span>Meeting Minutes</span>
+                <span class="cat-count">1</span>
+              </button>
+            </div>
+          </aside>
+
+          <!-- Notes Cards Grid -->
+          <div class="notes-cards-grid" id="notes-cards-grid"></div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           5. GITHUB IN-WEBSITE WORKSPACE TAB
+           ==================================================================== -->
+      <section id="view-github" class="view-panel">
+        <div class="view-header">
+          <div class="view-title-wrap">
+            <div>
+              <h2 class="view-main-title">GitHub Connected Workspace</h2>
+              <p class="view-sub-desc">Inspect repositories, commits, pull requests, and file trees directly inside Team CyberHelix.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <input type="text" id="github-user-input" class="cyber-input" style="width:200px;" placeholder="GitHub Username...">
+              <button class="btn-primary" onclick="syncGitHubUser()">Sync Profile</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="github-workspace-card">
+          <div class="github-profile-bar" id="github-profile-bar">
+            <!-- Dynamically populated profile -->
+          </div>
+
+          <div style="margin-bottom:1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <h3 style="font-family:'Outfit'; font-size:1.2rem; color:var(--text-main); font-weight:700;">Repositories & Live Tree Explorer</h3>
+            <span class="tag" id="github-repo-count-tag">Repositories</span>
+          </div>
+
+          <div class="github-repos-grid" id="github-repos-grid">
+            <!-- Repositories loaded from GitHub API -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           6. NEURONOVA AI - JARVIS CYBER ASSISTANT HUD
+           ==================================================================== -->
+      <section id="view-neuronova" class="view-panel">
+        <div class="view-header">
+          <div class="view-title-wrap">
+            <div>
+              <h2 class="view-main-title">NeuroNova AI — JARVIS Quantum Assistant</h2>
+              <p class="view-sub-desc">Autonomous cyber intelligence, code reasoning, and multimodal defensive copilot with speech synthesis.</p>
+            </div>
+            <div style="display:flex; gap:0.75rem; align-items:center;">
+              <button class="btn-secondary" onclick="openAIModelModal()">
+                ⚙️ Model Engine: <strong id="active-model-label" style="color:var(--liquid-cyan);">NeuroNova Core</strong>
+              </button>
+              <button class="btn-secondary" id="btn-toggle-voice-mode" onclick="toggleSpeechSynthesis()">
+                🔊 Voice Output: <strong id="voice-mode-status" style="color:var(--liquid-emerald);">ON</strong>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="neuronova-layout">
+          <!-- Left: Glowing Holographic Neural Core HUD -->
+          <div class="neuronova-hud-panel">
+            <div class="neural-core-sphere">
+              <div class="core-outer-ring"></div>
+              <div class="core-inner-ring"></div>
+              <div class="core-plasma-orb"></div>
+            </div>
+            <h3 style="font-family:'Outfit'; font-size:1.4rem; font-weight:800; color:var(--text-main); margin-bottom:0.25rem;">NeuroNova Core</h3>
+            <div style="font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--liquid-cyan); font-weight:700; margin-bottom:1rem;">NEURAL COGNITION ONLINE</div>
+            <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.55; margin-bottom:1.5rem;">
+              Synchronized with Team CyberHelix knowledge bases, threat intelligence pipelines, and AST code comprehension engines.
+            </p>
+
+            <div style="text-align:left; border-top:1px solid var(--border-subtle); padding-top:1.25rem;">
+              <div style="font-size:0.76rem; font-weight:700; color:var(--text-main); margin-bottom:0.65rem; text-transform:uppercase; font-family:'JetBrains Mono';">Quick Directives</div>
+              <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                <button class="demo-pill" style="text-align:left;" onclick="sendPromptToNeuroNova('Audit Helix Sentinel SIEM rules for evasion vectors')">🛡️ Audit SIEM rules for evasion</button>
+                <button class="demo-pill" style="text-align:left;" onclick="sendPromptToNeuroNova('Generate secure PBKDF2-HMAC password hashing with salt in Python')">🔑 Generate zero-trust auth code</button>
+                <button class="demo-pill" style="text-align:left;" onclick="sendPromptToNeuroNova('Explain Shannon entropy thresholds for detecting packed malware')">🔬 Explain Shannon entropy for malware</button>
+                <button class="demo-pill" style="text-align:left;" onclick="sendPromptToNeuroNova('Optimize PostgreSQL indexing for 10M security events')">⚡ PostgreSQL indexing for telemetry</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Chat Panel -->
+          <div class="neuronova-chat-panel">
+            <div class="ai-chat-header">
+              <div style="display:flex; align-items:center; gap:0.65rem;">
+                <span class="status-dot"></span>
+                <span style="font-size:0.9rem; font-weight:700; color:var(--text-main);">Live Holographic Transmission</span>
+              </div>
+              <span class="tag" id="chat-latency-tag">Sub-10ms Quantum Engine</span>
+            </div>
+
+            <div class="ai-chat-stream" id="ai-chat-stream">
+              <!-- Initial Greeting from NeuroNova -->
+              <div class="chat-bubble ai">
+                <strong>NeuroNova AI:</strong> Greetings, Operative. All 14 pod telemetry nodes are optimal. I am ready to analyze system logs, audit source code, synthesize cryptographic primitives, or execute security directives. How may I assist you today?
+              </div>
+            </div>
+
+            <form class="ai-chat-input-row" onsubmit="handleNeuroNovaChat(event)">
+              <button type="button" class="btn-mic-voice" id="btn-mic-input" onclick="toggleVoiceInput()" title="Voice Dictation">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+              </button>
+              <input type="text" id="ai-chat-input" class="cyber-input" placeholder="Give NeuroNova a task, question, or directive..." autocomplete="off">
+              <button type="submit" class="btn-primary" style="padding:0.65rem 1.35rem;">Transmit →</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           7. CLOUD IDE WITH NEURONOVA COPILOT
+           ==================================================================== -->
+      <section id="view-ide" class="view-panel">
+        <div class="view-header">
+          <div class="view-title-wrap">
+            <div>
+              <h2 class="view-main-title">CyberHelix Cloud IDE</h2>
+              <p class="view-sub-desc">In-browser multi-language development environment integrated with NeuroNova AI Copilot.</p>
+            </div>
+            <div style="display:flex; gap:0.65rem;">
+              <button class="btn-secondary" onclick="runIdeCode()">▶ Run Code</button>
+              <button class="btn-primary" onclick="ideCopilotAction('audit')">🛡️ Copilot Security Audit</button>
+              <button class="btn-secondary" onclick="ideCopilotAction('explain')">🤖 Explain Code</button>
+              <button class="btn-secondary" onclick="ideCopilotAction('optimize')">⚡ Optimize</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ide-layout">
+          <!-- Editor Pane -->
+          <div class="ide-editor-card">
+            <div class="ide-tabs-bar">
+              <div class="ide-file-tab-group">
+                <button class="ide-tab-pill active" onclick="switchIdeFile('python')">main.py (Python)</button>
+                <button class="ide-tab-pill" onclick="switchIdeFile('javascript')">auth_guard.js (JavaScript)</button>
+                <button class="ide-tab-pill" onclick="switchIdeFile('sql')">schema.sql (PostgreSQL)</button>
+                <button class="ide-tab-pill" onclick="switchIdeFile('html')">index.html (Web)</button>
+              </div>
+              <span class="tag" id="ide-lang-badge">Python 3.14</span>
+            </div>
+            <textarea id="ide-editor" class="ide-editor-textarea" spellcheck="false"></textarea>
+          </div>
+
+          <!-- Console & Copilot Output Pane -->
+          <div class="ide-output-panel">
+            <div class="widget-header" style="padding:0.75rem 1.25rem; margin-bottom:0;">
+              <div class="widget-title" style="font-size:0.95rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                Execution Terminal & Copilot Intelligence
+              </div>
+              <button class="btn-secondary" style="padding:0.25rem 0.65rem; font-size:0.75rem;" onclick="clearIdeConsole()">Clear</button>
+            </div>
+            <div class="ide-console-box" id="ide-console">
+              [SYSTEM]: Cloud IDE Ready. Click "▶ Run Code" or invoke NeuroNova Copilot.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           8. MEMBERS DIRECTORY VIEW
+           ==================================================================== -->
+      <section id="view-members" class="view-panel">
+        <div class="view-header">
+          <div class="view-title-wrap">
+            <div>
+              <h2 class="view-main-title">CyberHelix Member Roster</h2>
+              <p class="view-sub-desc">14 dedicated security researchers, engineers, forensic specialists, and analysts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="members-grid" id="members-grid"></div>
+      </section>
+
+      <!-- ====================================================================
+           9. CYBER UTILITIES SANDBOX VIEW
+           ==================================================================== -->
+      <section id="view-utilities" class="view-panel">
+        <div class="view-header">
+          <div class="view-title-wrap">
+            <div>
+              <h2 class="view-main-title">Cyber Utility Sandbox</h2>
+              <p class="view-sub-desc">Client-side cryptographic generators, encoders, subnet calculators, and triage utilities.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tools-grid">
+          <!-- Tool 1: Cryptographic Hash Generator -->
+          <div class="tool-card">
+            <h3 class="tool-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              Cryptographic Hash Generator
+            </h3>
+            <p class="tool-desc">Calculate WebCrypto SHA-256 and SHA-512 hashes in real-time.</p>
+            <div class="tool-form-group">
+              <label class="tool-label">Input String / Payload:</label>
+              <textarea id="hash-input" class="tool-textarea" placeholder="Enter string to hash... (e.g. CyberHelix@2026)">CyberHelix@2026</textarea>
+            </div>
+            <div class="tool-btn-row">
+              <button class="btn-primary" id="hash-calc-btn">Compute Hashes</button>
+            </div>
+            <div class="tool-form-group">
+              <label class="tool-label">SHA-256:</label>
+              <div class="tool-output-box" id="hash-out-sha256">Click compute to generate...</div>
+            </div>
+            <div class="tool-form-group">
+              <label class="tool-label">SHA-512 (First 64 chars):</label>
+              <div class="tool-output-box" id="hash-out-sha512">Click compute to generate...</div>
+            </div>
+          </div>
+
+          <!-- Tool 2: Base64 & Hex Encoder / Decoder -->
+          <div class="tool-card">
+            <h3 class="tool-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              Base64 & Hex Converter
+            </h3>
+            <p class="tool-desc">Encode and decode payloads, tokens, and binary representations.</p>
+            <div class="tool-form-group">
+              <label class="tool-label">Input String:</label>
+              <textarea id="b64-input" class="tool-textarea" placeholder="Enter text to encode or decode...">admin:CyberHelixRootToken</textarea>
+            </div>
+            <div class="tool-btn-row">
+              <button class="btn-primary" id="b64-encode-btn">Base64 Encode</button>
+              <button class="btn-secondary" id="b64-decode-btn">Base64 Decode</button>
+              <button class="btn-secondary" id="hex-encode-btn">To Hex</button>
+            </div>
+            <div class="tool-form-group">
+              <label class="tool-label">Converted Output:</label>
+              <div class="tool-output-box" id="b64-output">Converted result will appear here...</div>
+            </div>
+          </div>
+
+          <!-- Tool 3: IP Subnet CIDR Calculator -->
+          <div class="tool-card">
+            <h3 class="tool-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              IP & Subnet CIDR Calculator
+            </h3>
+            <p class="tool-desc">Calculate total IP range, network bits, and usable hosts from CIDR notation.</p>
+            <div class="tool-form-group">
+              <label class="tool-label">CIDR Notation (e.g. 192.168.1.0/24, 10.0.0.0/16):</label>
+              <input type="text" id="cidr-input" class="cyber-input" value="192.168.1.0/24">
+            </div>
+            <div class="tool-btn-row">
+              <button class="btn-primary" id="cidr-calc-btn">Calculate Subnet</button>
+            </div>
+            <div class="tool-form-group">
+              <label class="tool-label">Subnet Metrics:</label>
+              <div class="tool-output-box" id="cidr-output"><strong>Prefix /24</strong> | Total IPs: <strong>256</strong> | Usable Hosts: <strong>254</strong></div>
+            </div>
+          </div>
+
+          <!-- Tool 4: Incident Response Triage Checklist -->
+          <div class="tool-card">
+            <h3 class="tool-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              Live Incident Triage Checklist
+            </h3>
+            <p class="tool-desc">Operational readiness tracker following NIST SP 800-61 Rev 2 guidelines.</p>
+            <div style="display:flex; flex-direction:column; gap:0.65rem; font-size:0.85rem; color:var(--text-secondary);">
+              <label style="display:flex; align-items:center; gap:0.65rem; cursor:pointer;">
+                <input type="checkbox" checked style="accent-color:var(--liquid-cyan);">
+                <span>1. Preserve volatility memory dump & acquire disk image hash</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:0.65rem; cursor:pointer;">
+                <input type="checkbox" checked style="accent-color:var(--liquid-cyan);">
+                <span>2. Isolate compromised node from egress networks via iptables</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:0.65rem; cursor:pointer;">
+                <input type="checkbox" style="accent-color:var(--liquid-cyan);">
+                <span>3. Invalidate active Redis session tokens and reset LDAP creds</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:0.65rem; cursor:pointer;">
+                <input type="checkbox" style="accent-color:var(--liquid-cyan);">
+                <span>4. Correlate timestamp with Helix Sentinel SIEM log stream</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:0.65rem; cursor:pointer;">
+                <input type="checkbox" style="accent-color:var(--liquid-cyan);">
+                <span>5. Brief Super Admin (Suyash) & Research Head (Shivam)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           10. ADMIN MASTER CONTROL CONSOLE (ACCESSIBLE TO SUYASH RATHOD ONLY)
+           ==================================================================== -->
+      <section id="view-admin" class="view-panel">
+        <div class="view-header">
+          <div class="view-title-wrap">
+            <div>
+              <h2 class="view-main-title">
+                👑 Super Admin Command Nexus
+                <span class="admin-badge-indicator">LEVEL 5 ACCESS</span>
+              </h2>
+              <p class="view-sub-desc">Global platform management, operative credentials administration, and cross-pod inspection.</p>
+            </div>
+            <div style="display:flex; gap:0.5rem; align-items:center;">
+              <span style="font-size:0.85rem; font-weight:700; color:var(--text-main);">Impersonate Pod View:</span>
+              <select id="admin-pod-switcher" class="cyber-input" style="width:240px;" onchange="adminSwitchPodView(event)"></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-console-grid">
+          <!-- Operatives Credential & Access Table -->
+          <div class="operatives-table-card">
+            <div class="widget-header">
+              <div class="widget-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+                Operative Account Roster & Access Control
+              </div>
+              <span class="badge badge-cyan">14 Active Accounts</span>
+            </div>
+            <table class="operatives-table">
+              <thead>
+                <tr>
+                  <th>Operative</th>
+                  <th>Designation / Domain</th>
+                  <th>Email ID</th>
+                  <th>Access Role</th>
+                  <th>Security Passphrase</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-operatives-tbody">
+                <!-- Dynamically populated by app.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- System Audit Logs -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                Global Zero-Trust Audit Stream
+              </div>
+              <button class="btn-secondary" style="padding:0.25rem 0.65rem; font-size:0.75rem;" onclick="clearAuditLogs()">Clear Log</button>
+            </div>
+            <div id="admin-audit-log-stream" style="font-family:'JetBrains Mono'; font-size:0.78rem; color:var(--text-secondary); max-height:220px; overflow-y:auto; line-height:1.7;">
+              <!-- Real-time audit logs -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Modal Dialog (For Notes Reader, Project Explorer & Member Dossier) -->
+    <div id="modal-overlay" class="modal-overlay">
+      <div class="modal-container">
+        <div class="modal-header">
+          <div class="modal-header-title" id="modal-title">Resource Details</div>
+          <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
+        </div>
+        <div class="modal-body" id="modal-body"></div>
+      </div>
+    </div>
+
+    <!-- Password Change Modal -->
+    <div id="password-modal-overlay" class="modal-overlay">
+      <div class="modal-container" style="max-width: 480px;">
+        <div class="modal-header">
+          <div class="modal-header-title">Update Passphrase</div>
+          <button class="modal-close-btn" onclick="closePasswordModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form onsubmit="handlePasswordChangeSubmit(event)">
+            <div class="login-form-group">
+              <label class="login-label">Current Password</label>
+              <input type="password" id="pw-current" class="login-input" required autocomplete="current-password">
+            </div>
+            <div class="login-form-group">
+              <label class="login-label">New Password</label>
+              <input type="password" id="pw-new" class="login-input" minlength="6" required autocomplete="new-password">
+            </div>
+            <div class="login-form-group">
+              <label class="login-label">Confirm New Password</label>
+              <input type="password" id="pw-confirm" class="login-input" minlength="6" required autocomplete="new-password">
+            </div>
+            <div style="margin-top:1.5rem; display:flex; justify-content:flex-end; gap:0.75rem;">
+              <button type="button" class="btn-secondary" onclick="closePasswordModal()">Cancel</button>
+              <button type="submit" class="btn-primary">Save New Passphrase</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Model Engine Settings Modal (GGUF / Hugging Face) -->
+    <div id="ai-model-modal-overlay" class="modal-overlay">
+      <div class="modal-container" style="max-width: 540px;">
+        <div class="modal-header">
+          <div class="modal-header-title">NeuroNova AI Engine Config</div>
+          <button class="modal-close-btn" onclick="closeAIModelModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:0.86rem; color:var(--text-secondary); margin-bottom:1.25rem;">
+            Configure AI Inference for NeuroNova and Cloud IDE Copilot. Choose between our built-in engine, Hugging Face Inference API, or local GGUF models.
+          </p>
+          <div class="login-form-group">
+            <label class="login-label">Inference Provider</label>
+            <select id="ai-provider-select" class="cyber-input" onchange="toggleProviderFields()">
+              <option value="neuronova-core">NeuroNova Neural Core (Built-in Optimized Agent)</option>
+              <option value="huggingface">Hugging Face Inference API (Cloud Models)</option>
+              <option value="local-gguf">Local GGUF / llama.cpp / Ollama Endpoint</option>
+            </select>
+          </div>
+          <div id="hf-fields" style="display:none;">
+            <div class="login-form-group">
+              <label class="login-label">Hugging Face Model ID</label>
+              <input type="text" id="hf-model-id" class="login-input" value="Qwen/Qwen2.5-Coder-7B-Instruct">
+            </div>
+            <div class="login-form-group">
+              <label class="login-label">Hugging Face User Access Token (API Key)</label>
+              <input type="password" id="hf-api-token" class="login-input" placeholder="hf_xxxxxxxxxxxxxxxxxxxx">
+            </div>
+          </div>
+          <div id="gguf-fields" style="display:none;">
+            <div class="login-form-group">
+              <label class="login-label">Local GGUF Endpoint URL</label>
+              <input type="text" id="gguf-endpoint" class="login-input" value="http://localhost:11434/api/generate">
+            </div>
+            <div class="login-form-group">
+              <label class="login-label">Model Name / Path</label>
+              <input type="text" id="gguf-model-name" class="login-input" value="llama3.2:3b">
+            </div>
+          </div>
+          <div style="margin-top:1.5rem; display:flex; justify-content:flex-end; gap:0.75rem;">
+            <button type="button" class="btn-secondary" onclick="closeAIModelModal()">Close</button>
+            <button type="button" class="btn-primary" onclick="saveAIModelConfig()">Save Configuration</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div id="task-modal-overlay" class="modal-overlay">
+      <div class="modal-container" style="max-width: 480px;">
+        <div class="modal-header">
+          <div class="modal-header-title">Create Field Task</div>
+          <button class="modal-close-btn" onclick="closeAddTaskModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form onsubmit="handleCreateTaskSubmit(event)">
+            <div class="login-form-group">
+              <label class="login-label">Task Title</label>
+              <input type="text" id="task-title-input" class="login-input" placeholder="e.g. Optimize GIN index for telemetry" required>
+            </div>
+            <div class="login-form-group">
+              <label class="login-label">Detailed Notes / Requirements</label>
+              <textarea id="task-desc-input" class="tool-textarea" placeholder="Add sprint notes or commands..." style="min-height:70px;"></textarea>
+            </div>
+            <div class="login-form-group">
+              <label class="login-label">Priority</label>
+              <select id="task-priority-input" class="cyber-input">
+                <option value="CRITICAL">Critical (P1)</option>
+                <option value="HIGH" selected>High (P2)</option>
+                <option value="MEDIUM">Medium (P3)</option>
+                <option value="LOW">Low (P4)</option>
+              </select>
+            </div>
+            <div style="margin-top:1.5rem; display:flex; justify-content:flex-end; gap:0.75rem;">
+              <button type="button" class="btn-secondary" onclick="closeAddTaskModal()">Cancel</button>
+              <button type="submit" class="btn-primary">Add Task</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div>
+          <strong>Team CyberHelix</strong> &copy; 2026. All rights reserved. Advanced Cybersecurity & Fullstack Engineering Pod.
+        </div>
+        <div class="footer-links">
+          <a href="javascript:void(0)" onclick="switchTab('dashboard')">Dashboard</a>
+          <a href="javascript:void(0)" onclick="switchTab('pod')">Pod Platform</a>
+          <a href="javascript:void(0)" onclick="switchTab('projects')">Projects</a>
+          <a href="javascript:void(0)" onclick="switchTab('notes')">Knowledge Base</a>
+          <a href="javascript:void(0)" onclick="switchTab('github')">GitHub</a>
+          <a href="javascript:void(0)" onclick="switchTab('neuronova')">NeuroNova AI</a>
+          <a href="javascript:void(0)" onclick="switchTab('ide')">Cloud IDE</a>
+          <a href="javascript:void(0)" onclick="switchTab('members')">Directory</a>
+          <a href="javascript:void(0)" onclick="switchTab('utilities')">Cyber Tools</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

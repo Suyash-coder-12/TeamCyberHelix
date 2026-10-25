@@ -1,0 +1,46 @@
+[
+  {
+    "id": "RULE-001",
+    "name": "SSH Brute Force Attack",
+    "severity": "CRITICAL",
+    "description": "More than 3 failed SSH logins detected from single IP within window.",
+    "matchField": "message",
+    "pattern": "Failed password for",
+    "threshold": 3,
+    "timeWindowSeconds": 60,
+    "action": "BLOCK_IP_AND_ALERT"
+  },
+  {
+    "id": "RULE-002",
+    "name": "SQL Injection Attempt",
+    "severity": "HIGH",
+    "description": "Classic SQLi signature detected in web request query or body.",
+    "matchField": "message",
+    "pattern": "(UNION SELECT|OR 1=1|--|; DROP TABLE)",
+    "threshold": 1,
+    "timeWindowSeconds": 10,
+    "action": "ALERT_SOC"
+  },
+  {
+    "id": "RULE-003",
+    "name": "Suspicious Sudo Privilege Escalation",
+    "severity": "HIGH",
+    "description": "User attempting unauthorized sudo or command injection.",
+    "matchField": "message",
+    "pattern": "NOT in sudoers|command not allowed",
+    "threshold": 2,
+    "timeWindowSeconds": 30,
+    "action": "REVOKE_SESSION"
+  },
+  {
+    "id": "RULE-004",
+    "name": "Port Sweep Activity",
+    "severity": "MEDIUM",
+    "description": "Rapid successive connection resets indicating SYN stealth scan.",
+    "matchField": "message",
+    "pattern": "TCP connection reset|SYN_RECEIVED_TIMEOUT",
+    "threshold": 5,
+    "timeWindowSeconds": 15,
+    "action": "LOG_INCIDENT"
+  }
+]
